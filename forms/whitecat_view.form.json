@@ -1,0 +1,164 @@
+{
+  "layout": {
+    "actions": [
+      {
+        "action": [
+          {
+            "payload": {},
+            "name": "Fullscreen",
+            "type": "Form.fullscreen"
+          }
+        ],
+        "title": "切换全屏",
+        "icon": "icon-maximize-2",
+        "showWhenAdd": true,
+        "showWhenView": true
+      },
+      {
+        "title": "重新生成代码",
+        "icon": "icon-layers",
+        "showWhenAdd": true,
+        "showWhenView": true,
+        "action": [
+          {
+            "name": "StudioModel",
+            "type": "Studio.model",
+            "payload": {
+              "args": [
+                "whitecat"
+              ],
+              "method": "CreateOne"
+            }
+          },
+          {
+            "name": "Confirm",
+            "type": "Common.confirm",
+            "payload": {
+              "content": "处理完成",
+              "title": "提示"
+            }
+          }
+        ]
+      },
+      {
+        "action": [
+          {
+            "type": "Common.closeModal",
+            "payload": {},
+            "name": "CloseModal"
+          }
+        ],
+        "title": "返回",
+        "icon": "icon-arrow-left",
+        "showWhenAdd": true,
+        "showWhenView": true
+      },
+      {
+        "title": "保存",
+        "icon": "icon-check",
+        "style": "primary",
+        "showWhenAdd": true,
+        "action": [
+          {
+            "name": "Submit",
+            "type": "Form.submit",
+            "payload": {}
+          },
+          {
+            "type": "Common.closeModal",
+            "payload": {},
+            "name": "Back"
+          }
+        ]
+      },
+      {
+        "icon": "icon-trash-2",
+        "style": "danger",
+        "title": "Delete",
+        "action": [
+          {
+            "payload": {
+              "content": "确认删除，删除后数据无法恢复？",
+              "title": "提示"
+            },
+            "name": "Confirm",
+            "type": "Common.confirm"
+          },
+          {
+            "payload": {
+              "model": "whitecat"
+            },
+            "type": "Form.delete",
+            "name": "Delete"
+          },
+          {
+            "type": "Common.closeModal",
+            "payload": {},
+            "name": "Back"
+          }
+        ]
+      }
+    ],
+    "form": {
+      "sections": [
+        {
+          "columns": [
+            {
+              "width": 8,
+              "name": "昵称"
+            },
+            {
+              "name": "cat id",
+              "width": 8
+            }
+          ]
+        }
+      ],
+      "props": {}
+    },
+    "primary": "id"
+  },
+  "fields": {
+    "form": {
+      "昵称": {
+        "bind": "name",
+        "edit": {
+          "props": {
+            "itemProps": {
+              "rules": [
+                {
+                  "required": true
+                }
+              ]
+            }
+          },
+          "type": "Input"
+        }
+      },
+      "cat id": {
+        "edit": {
+          "props": {
+            "itemProps": {
+              "rules": [
+                {
+                  "type": "integer"
+                }
+              ]
+            }
+          },
+          "type": "InputNumber"
+        },
+        "bind": "cat_id"
+      }
+    }
+  },
+  "name": "::Pet",
+  "action": {
+    "bind": {
+      "model": "whitecat",
+      "option": {
+        "withs": {}
+      }
+    }
+  }
+}

@@ -1,0 +1,164 @@
+{
+  "name": "Dog",
+  "action": {
+    "bind": {
+      "model": "dog",
+      "option": {
+        "withs": {}
+      }
+    }
+  },
+  "layout": {
+    "actions": [
+      {
+        "icon": "icon-maximize-2",
+        "showWhenAdd": true,
+        "showWhenView": true,
+        "action": [
+          {
+            "name": "Fullscreen",
+            "type": "Form.fullscreen",
+            "payload": {}
+          }
+        ],
+        "title": "切换全屏"
+      },
+      {
+        "title": "重新生成代码",
+        "icon": "icon-layers",
+        "showWhenAdd": true,
+        "showWhenView": true,
+        "action": [
+          {
+            "type": "Studio.model",
+            "payload": {
+              "args": [
+                "dog"
+              ],
+              "method": "CreateOne"
+            },
+            "name": "StudioModel"
+          },
+          {
+            "type": "Common.confirm",
+            "payload": {
+              "title": "提示",
+              "content": "处理完成"
+            },
+            "name": "Confirm"
+          }
+        ]
+      },
+      {
+        "title": "返回",
+        "icon": "icon-arrow-left",
+        "showWhenAdd": true,
+        "showWhenView": true,
+        "action": [
+          {
+            "name": "CloseModal",
+            "type": "Common.closeModal",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "title": "保存",
+        "icon": "icon-check",
+        "style": "primary",
+        "showWhenAdd": true,
+        "action": [
+          {
+            "type": "Form.submit",
+            "payload": {},
+            "name": "Submit"
+          },
+          {
+            "type": "Common.closeModal",
+            "payload": {},
+            "name": "Back"
+          }
+        ]
+      },
+      {
+        "title": "Delete",
+        "action": [
+          {
+            "payload": {
+              "title": "提示",
+              "content": "确认删除，删除后数据无法恢复？"
+            },
+            "name": "Confirm",
+            "type": "Common.confirm"
+          },
+          {
+            "name": "Delete",
+            "payload": {
+              "model": "dog"
+            },
+            "type": "Form.delete"
+          },
+          {
+            "name": "Back",
+            "type": "Common.closeModal",
+            "payload": {}
+          }
+        ],
+        "icon": "icon-trash-2",
+        "style": "danger"
+      }
+    ],
+    "form": {
+      "sections": [
+        {
+          "columns": [
+            {
+              "name": "昵称",
+              "width": 8
+            },
+            {
+              "name": "pet id",
+              "width": 8
+            }
+          ]
+        }
+      ],
+      "props": {}
+    },
+    "primary": "id"
+  },
+  "fields": {
+    "form": {
+      "昵称": {
+        "edit": {
+          "props": {
+            "itemProps": {
+              "rules": [
+                {
+                  "required": true
+                }
+              ]
+            }
+          },
+          "type": "Input"
+        },
+        "bind": "name"
+      },
+      "pet id": {
+        "bind": "pet_id",
+        "edit": {
+          "props": {
+            "itemProps": {
+              "rules": [
+                {
+                  "type": "integer"
+                }
+              ]
+            }
+          },
+          "type": "InputNumber"
+        }
+      }
+    }
+  }
+}

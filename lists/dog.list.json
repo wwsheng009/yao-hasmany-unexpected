@@ -1,0 +1,37 @@
+{
+  "fields": {
+    "list": {
+      "昵称": {
+        "bind": "name",
+        "edit": {
+          "props": {
+            "itemProps": {
+              "rules": [
+                {
+                  "required": true
+                }
+              ]
+            }
+          },
+          "type": "Input"
+        }
+      }
+    }
+  },
+  "name": "Dog",
+  "action": {
+    "bind": {
+      "table": "dog"
+    }
+  },
+  "layout": {
+    "list": {
+      "columns": [
+        {
+          "name": "昵称",
+          "width": 6
+        }
+      ]
+    }
+  }
+}

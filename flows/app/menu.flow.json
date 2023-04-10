@@ -1,0 +1,76 @@
+{
+  "name": "APP Menu",
+  "nodes": [],
+  "output": {
+    "setting": [
+      {
+        "icon": "icon-settings",
+        "id": 999999,
+        "name": "设置",
+        "path": "/setting",
+        "children": [
+          {
+            "path": "/setting",
+            "id": 10002,
+            "name": "系统设置"
+          }
+        ]
+      }
+    ],
+    "items": [
+      {
+        "icon": "icon-activity",
+        "id": 1,
+        "name": "数据模型",
+        "parent": null,
+        "path": "/x/Chart/dashboard",
+        "visible_menu": 0,
+        "blocks": 0
+      },
+      {
+        "name": "::Pet",
+        "extra": "cat",
+        "visible_menu": 0,
+        "id": 10,
+        "path": "/x/Table/cat",
+        "children": [],
+        "icon": "icon-box",
+        "rank": 1,
+        "status": "enabled"
+      },
+      {
+        "id": 20,
+        "children": [],
+        "status": "enabled",
+        "extra": "dog",
+        "visible_menu": 0,
+        "name": "Dog",
+        "path": "/x/Table/dog",
+        "icon": "icon-box",
+        "rank": 2
+      },
+      {
+        "visible_menu": 0,
+        "children": [],
+        "icon": "icon-box",
+        "extra": "pet",
+        "status": "enabled",
+        "id": 30,
+        "name": "::Pet",
+        "path": "/x/Table/pet",
+        "rank": 3
+      },
+      {
+        "name": "::Pet",
+        "path": "/x/Table/whitecat",
+        "children": [],
+        "icon": "icon-box",
+        "rank": 4,
+        "status": "enabled",
+        "id": 40,
+        "extra": "whitecat",
+        "visible_menu": 0
+      }
+    ]
+  }
+}

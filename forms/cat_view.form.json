@@ -1,0 +1,197 @@
+{
+  "layout": {
+    "form": {
+      "props": {},
+      "sections": [
+        {
+          "columns": [
+            {
+              "name": "昵称",
+              "width": 8
+            },
+            {
+              "name": "pet id",
+              "width": 8
+            }
+          ]
+        },
+        {
+          "columns": [
+            {
+              "name": "列表",
+              "tabs": [
+                {
+                  "title": "列表white_cats",
+                  "columns": [
+                    {
+                      "name": "列表white_cats",
+                      "width": 24
+                    }
+                  ]
+                }
+              ],
+              "width": 24
+            }
+          ]
+        }
+      ]
+    },
+    "primary": "id",
+    "actions": [
+      {
+        "showWhenView": true,
+        "action": [
+          {
+            "payload": {},
+            "name": "Fullscreen",
+            "type": "Form.fullscreen"
+          }
+        ],
+        "title": "切换全屏",
+        "icon": "icon-maximize-2",
+        "showWhenAdd": true
+      },
+      {
+        "action": [
+          {
+            "name": "StudioModel",
+            "type": "Studio.model",
+            "payload": {
+              "args": [
+                "cat"
+              ],
+              "method": "CreateOne"
+            }
+          },
+          {
+            "name": "Confirm",
+            "type": "Common.confirm",
+            "payload": {
+              "content": "处理完成",
+              "title": "提示"
+            }
+          }
+        ],
+        "title": "重新生成代码",
+        "icon": "icon-layers",
+        "showWhenAdd": true,
+        "showWhenView": true
+      },
+      {
+        "showWhenView": true,
+        "action": [
+          {
+            "type": "Common.closeModal",
+            "payload": {},
+            "name": "CloseModal"
+          }
+        ],
+        "title": "返回",
+        "icon": "icon-arrow-left",
+        "showWhenAdd": true
+      },
+      {
+        "icon": "icon-check",
+        "style": "primary",
+        "showWhenAdd": true,
+        "action": [
+          {
+            "payload": {},
+            "name": "Submit",
+            "type": "Form.submit"
+          },
+          {
+            "payload": {},
+            "name": "Back",
+            "type": "Common.closeModal"
+          }
+        ],
+        "title": "保存"
+      },
+      {
+        "style": "danger",
+        "title": "Delete",
+        "action": [
+          {
+            "type": "Common.confirm",
+            "payload": {
+              "content": "确认删除，删除后数据无法恢复？",
+              "title": "提示"
+            },
+            "name": "Confirm"
+          },
+          {
+            "type": "Form.delete",
+            "name": "Delete",
+            "payload": {
+              "model": "cat"
+            }
+          },
+          {
+            "type": "Common.closeModal",
+            "payload": {},
+            "name": "Back"
+          }
+        ],
+        "icon": "icon-trash-2"
+      }
+    ]
+  },
+  "fields": {
+    "form": {
+      "列表white_cats": {
+        "bind": "id",
+        "edit": {
+          "props": {
+            "query": {
+              "where.cat_id.eq": "{{id}}"
+            },
+            "model": "whitecat"
+          },
+          "type": "Table"
+        }
+      },
+      "昵称": {
+        "bind": "name",
+        "edit": {
+          "type": "Input",
+          "props": {
+            "itemProps": {
+              "rules": [
+                {
+                  "required": true
+                }
+              ]
+            }
+          }
+        }
+      },
+      "pet id": {
+        "bind": "pet_id",
+        "edit": {
+          "type": "InputNumber",
+          "props": {
+            "itemProps": {
+              "rules": [
+                {
+                  "type": "integer"
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "name": "::Pet",
+  "action": {
+    "bind": {
+      "option": {
+        "withs": {
+          "white_cats": {}
+        }
+      },
+      "model": "cat"
+    }
+  }
+}

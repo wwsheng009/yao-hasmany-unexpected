@@ -1,0 +1,34 @@
+{
+  "name": "::Pet",
+  "table": { "name": "whitecat", "label": "白猫" },
+  "columns": [
+    { "name": "id", "label": "ID", "type": "ID" },
+    {
+      "name": "name",
+      "label": "昵称",
+      "type": "string",
+      "length": 80,
+      "index": true,
+      "nullable": true
+    },
+    {
+      "name": "cat_id",
+      "label": "cat id",
+      "type": "integer",
+      "nullable": true
+    }
+  ],
+  "relations": {},
+  "values": [
+    {
+      "name": "white_cat  one",
+      "cat_id": 1
+    },
+    {
+      "name": "white_cat  two",
+      "cat_id": 1
+    }
+  ],
+  "indexes": [],
+  "option": {}
+}

@@ -1,0 +1,108 @@
+{
+  "layout": {
+    "operation": {
+      "actions": []
+    },
+    "filter": {},
+    "chart": {
+      "columns": [
+        {
+          "name": "表格数量",
+          "width": 12
+        },
+        {
+          "name": "模型数量",
+          "width": 12
+        },
+        {
+          "name": "cat记录数",
+          "width": 6
+        },
+        {
+          "name": "dog记录数",
+          "width": 6
+        },
+        {
+          "name": "pet记录数",
+          "width": 6
+        },
+        {
+          "width": 6,
+          "name": "whitecat记录数"
+        }
+      ]
+    }
+  },
+  "fields": {
+    "filter": {},
+    "chart": {
+      "模型数量": {
+        "bind": "model_count",
+        "view": {
+          "type": "Number",
+          "props": {
+            "unit": "个"
+          }
+        }
+      },
+      "cat记录数": {
+        "bind": "cat",
+        "link": "/x/Table/cat",
+        "view": {
+          "type": "Number",
+          "props": {
+            "unit": "条"
+          }
+        }
+      },
+      "dog记录数": {
+        "bind": "dog",
+        "link": "/x/Table/dog",
+        "view": {
+          "type": "Number",
+          "props": {
+            "unit": "条"
+          }
+        }
+      },
+      "pet记录数": {
+        "bind": "pet",
+        "link": "/x/Table/pet",
+        "view": {
+          "type": "Number",
+          "props": {
+            "unit": "条"
+          }
+        }
+      },
+      "whitecat记录数": {
+        "link": "/x/Table/whitecat",
+        "view": {
+          "type": "Number",
+          "props": {
+            "unit": "条"
+          }
+        },
+        "bind": "whitecat"
+      },
+      "表格数量": {
+        "view": {
+          "props": {
+            "unit": "个"
+          },
+          "type": "Number"
+        },
+        "bind": "table_count"
+      }
+    }
+  },
+  "name": "数据图表",
+  "action": {
+    "data": {
+      "default": [
+        "2023-03-27"
+      ],
+      "process": "scripts.dashboard.Data"
+    }
+  }
+}

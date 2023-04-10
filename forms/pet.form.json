@@ -1,0 +1,200 @@
+{
+  "action": {
+    "save": {
+      "process": "scripts.pet.Save"
+    },
+    "before:delete": "scripts.pet.BeforeDelete",
+    "bind": {
+      "option": {
+        "withs": {
+          "cats": {},
+          "dogs": {}
+        }
+      },
+      "model": "pet"
+    }
+  },
+  "layout": {
+    "primary": "id",
+    "actions": [
+      {
+        "title": "切换全屏",
+        "icon": "icon-maximize-2",
+        "showWhenAdd": true,
+        "showWhenView": true,
+        "action": [
+          {
+            "payload": {},
+            "name": "Fullscreen",
+            "type": "Form.fullscreen"
+          }
+        ]
+      },
+      {
+        "title": "重新生成代码",
+        "icon": "icon-layers",
+        "showWhenAdd": true,
+        "showWhenView": true,
+        "action": [
+          {
+            "payload": {
+              "method": "CreateOne",
+              "args": [
+                "pet"
+              ]
+            },
+            "name": "StudioModel",
+            "type": "Studio.model"
+          },
+          {
+            "type": "Common.confirm",
+            "payload": {
+              "content": "处理完成",
+              "title": "提示"
+            },
+            "name": "Confirm"
+          }
+        ]
+      },
+      {
+        "action": [
+          {
+            "type": "Common.closeModal",
+            "payload": {},
+            "name": "CloseModal"
+          }
+        ],
+        "title": "返回",
+        "icon": "icon-arrow-left",
+        "showWhenAdd": true,
+        "showWhenView": true
+      },
+      {
+        "action": [
+          {
+            "name": "Submit",
+            "type": "Form.submit",
+            "payload": {}
+          },
+          {
+            "type": "Common.closeModal",
+            "payload": {},
+            "name": "Back"
+          }
+        ],
+        "title": "保存",
+        "icon": "icon-check",
+        "style": "primary",
+        "showWhenAdd": true
+      },
+      {
+        "icon": "icon-trash-2",
+        "style": "danger",
+        "title": "Delete",
+        "action": [
+          {
+            "name": "Confirm",
+            "type": "Common.confirm",
+            "payload": {
+              "title": "提示",
+              "content": "确认删除，删除后数据无法恢复？"
+            }
+          },
+          {
+            "name": "Delete",
+            "payload": {
+              "model": "pet"
+            },
+            "type": "Form.delete"
+          },
+          {
+            "type": "Common.closeModal",
+            "payload": {},
+            "name": "Back"
+          }
+        ]
+      }
+    ],
+    "form": {
+      "props": {},
+      "sections": [
+        {
+          "columns": [
+            {
+              "name": "昵称",
+              "width": 8
+            }
+          ]
+        },
+        {
+          "columns": [
+            {
+              "width": 24,
+              "name": "列表",
+              "tabs": [
+                {
+                  "columns": [
+                    {
+                      "width": 24,
+                      "name": "列表cats"
+                    }
+                  ],
+                  "title": "列表cats"
+                },
+                {
+                  "title": "列表dogs",
+                  "columns": [
+                    {
+                      "width": 24,
+                      "name": "列表dogs"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "fields": {
+    "form": {
+      "昵称": {
+        "bind": "name",
+        "edit": {
+          "props": {
+            "itemProps": {
+              "rules": [
+                {
+                  "required": true
+                }
+              ]
+            }
+          },
+          "type": "Input"
+        }
+      },
+      "列表cats": {
+        "edit": {
+          "type": "List",
+          "props": {
+            "name": "cat",
+            "showLabel": true
+          }
+        },
+        "bind": "cats"
+      },
+      "列表dogs": {
+        "bind": "dogs",
+        "edit": {
+          "type": "List",
+          "props": {
+            "name": "dog",
+            "showLabel": true
+          }
+        }
+      }
+    }
+  },
+  "name": "::Pet"
+}

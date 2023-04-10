@@ -1,0 +1,39 @@
+{
+  "name": "::Pet",
+  "table": { "name": "pet", "label": "宠物表" },
+  "columns": [
+    { "name": "id", "label": "ID", "type": "ID" },
+    {
+      "name": "name",
+      "label": "昵称",
+      "type": "string",
+      "length": 80,
+      "index": true,
+      "nullable": true
+    }
+  ],
+  "relations": {
+    "cats": {
+      "foreign": "id",
+      "key": "pet_id",
+      "type": "hasMany",
+      "model": "cat"
+    },
+    "dogs": {
+      "foreign": "id",
+      "key": "pet_id",
+      "type": "hasMany",
+      "model": "dog"
+    }
+  },
+  "values": [
+    {
+      "name": "dog number one"
+    },
+    {
+      "name": "cat number two"
+    }
+  ],
+  "indexes": [],
+  "option": {}
+}

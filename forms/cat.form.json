@@ -1,0 +1,199 @@
+{
+  "fields": {
+    "form": {
+      "昵称": {
+        "bind": "name",
+        "edit": {
+          "type": "Input",
+          "props": {
+            "itemProps": {
+              "rules": [
+                {
+                  "required": true
+                }
+              ]
+            }
+          }
+        }
+      },
+      "pet id": {
+        "edit": {
+          "type": "InputNumber",
+          "props": {
+            "itemProps": {
+              "rules": [
+                {
+                  "type": "integer"
+                }
+              ]
+            }
+          }
+        },
+        "bind": "pet_id"
+      },
+      "列表white_cats": {
+        "bind": "white_cats",
+        "edit": {
+          "props": {
+            "showLabel": true,
+            "name": "whitecat"
+          },
+          "type": "List"
+        }
+      }
+    }
+  },
+  "name": "::Pet",
+  "action": {
+    "save": {
+      "process": "scripts.cat.Save"
+    },
+    "before:delete": "scripts.cat.BeforeDelete",
+    "bind": {
+      "model": "cat",
+      "option": {
+        "withs": {
+          "white_cats": {}
+        }
+      }
+    }
+  },
+  "layout": {
+    "primary": "id",
+    "actions": [
+      {
+        "showWhenView": true,
+        "action": [
+          {
+            "payload": {},
+            "name": "Fullscreen",
+            "type": "Form.fullscreen"
+          }
+        ],
+        "title": "切换全屏",
+        "icon": "icon-maximize-2",
+        "showWhenAdd": true
+      },
+      {
+        "showWhenAdd": true,
+        "showWhenView": true,
+        "action": [
+          {
+            "payload": {
+              "method": "CreateOne",
+              "args": [
+                "cat"
+              ]
+            },
+            "name": "StudioModel",
+            "type": "Studio.model"
+          },
+          {
+            "type": "Common.confirm",
+            "payload": {
+              "content": "处理完成",
+              "title": "提示"
+            },
+            "name": "Confirm"
+          }
+        ],
+        "title": "重新生成代码",
+        "icon": "icon-layers"
+      },
+      {
+        "showWhenAdd": true,
+        "showWhenView": true,
+        "action": [
+          {
+            "type": "Common.closeModal",
+            "payload": {},
+            "name": "CloseModal"
+          }
+        ],
+        "title": "返回",
+        "icon": "icon-arrow-left"
+      },
+      {
+        "showWhenAdd": true,
+        "action": [
+          {
+            "payload": {},
+            "name": "Submit",
+            "type": "Form.submit"
+          },
+          {
+            "name": "Back",
+            "type": "Common.closeModal",
+            "payload": {}
+          }
+        ],
+        "title": "保存",
+        "icon": "icon-check",
+        "style": "primary"
+      },
+      {
+        "style": "danger",
+        "title": "Delete",
+        "action": [
+          {
+            "name": "Confirm",
+            "type": "Common.confirm",
+            "payload": {
+              "title": "提示",
+              "content": "确认删除，删除后数据无法恢复？"
+            }
+          },
+          {
+            "payload": {
+              "model": "cat"
+            },
+            "type": "Form.delete",
+            "name": "Delete"
+          },
+          {
+            "payload": {},
+            "name": "Back",
+            "type": "Common.closeModal"
+          }
+        ],
+        "icon": "icon-trash-2"
+      }
+    ],
+    "form": {
+      "sections": [
+        {
+          "columns": [
+            {
+              "name": "昵称",
+              "width": 8
+            },
+            {
+              "name": "pet id",
+              "width": 8
+            }
+          ]
+        },
+        {
+          "columns": [
+            {
+              "width": 24,
+              "name": "列表",
+              "tabs": [
+                {
+                  "title": "列表white_cats",
+                  "columns": [
+                    {
+                      "name": "列表white_cats",
+                      "width": 24
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "props": {}
+    }
+  }
+}

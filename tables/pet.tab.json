@@ -1,0 +1,169 @@
+{
+  "name": "::Pet",
+  "action": {
+    "bind": {
+      "model": "pet",
+      "option": {
+        "withs": {
+          "dogs": {},
+          "cats": {}
+        },
+        "option": {
+          "form": "pet"
+        }
+      }
+    }
+  },
+  "layout": {
+    "header": {
+      "preset": {},
+      "actions": []
+    },
+    "filter": {
+      "columns": [
+        {
+          "name": "昵称",
+          "width": 4
+        }
+      ],
+      "actions": [
+        {
+          "title": "添加",
+          "icon": "icon-plus",
+          "width": 3,
+          "action": [
+            {
+              "type": "Common.openModal",
+              "payload": {
+                "Form": {
+                  "type": "edit",
+                  "model": "pet"
+                }
+              },
+              "name": "OpenModal"
+            }
+          ]
+        }
+      ]
+    },
+    "table": {
+      "columns": [
+        {
+          "name": "ID",
+          "width": 160
+        },
+        {
+          "name": "昵称",
+          "width": 160
+        }
+      ],
+      "operation": {
+        "fold": false,
+        "actions": [
+          {
+            "action": [
+              {
+                "name": "OpenModal",
+                "type": "Common.openModal",
+                "payload": {
+                  "Form": {
+                    "model": "pet_view",
+                    "type": "view"
+                  }
+                }
+              }
+            ],
+            "title": "查看",
+            "icon": "icon-eye"
+          },
+          {
+            "title": "编辑",
+            "icon": "icon-edit-2",
+            "action": [
+              {
+                "name": "OpenModal",
+                "type": "Common.openModal",
+                "payload": {
+                  "Form": {
+                    "model": "pet",
+                    "type": "edit"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "action": [
+              {
+                "name": "Confirm",
+                "type": "Common.confirm",
+                "payload": {
+                  "content": "删除后不可撤销！",
+                  "title": "确认删除"
+                }
+              },
+              {
+                "payload": {
+                  "model": "pet"
+                },
+                "name": "Delete",
+                "type": "Table.delete"
+              }
+            ],
+            "title": "删除",
+            "icon": "icon-trash-2"
+          }
+        ]
+      }
+    },
+    "primary": "id"
+  },
+  "fields": {
+    "filter": {
+      "昵称": {
+        "bind": "where.name.match",
+        "edit": {
+          "type": "Input",
+          "compute": "Trim",
+          "props": {
+            "placeholder": "请输入昵称"
+          }
+        }
+      }
+    },
+    "table": {
+      "昵称": {
+        "bind": "name",
+        "view": {
+          "type": "Text",
+          "props": {}
+        },
+        "edit": {
+          "bind": "name",
+          "props": {
+            "itemProps": {
+              "rules": [
+                {
+                  "required": true
+                }
+              ]
+            }
+          },
+          "type": "Input"
+        }
+      },
+      "ID": {
+        "view": {
+          "props": {},
+          "type": "Text"
+        },
+        "edit": {
+          "type": "Input",
+          "bind": "id",
+          "props": {}
+        },
+        "bind": "id"
+      }
+    }
+  }
+}
