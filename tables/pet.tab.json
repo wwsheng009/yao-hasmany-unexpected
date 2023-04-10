@@ -6,7 +6,13 @@
       "option": {
         "withs": {
           "dogs": {},
-          "cats": {}
+          "cats": {
+            "query": {
+              "withs": {
+                "white_cats": {}
+              }
+            }
+          }
         },
         "option": {
           "form": "pet"

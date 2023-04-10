@@ -15,7 +15,7 @@ yao migrate --reset
 yao run yao.table.get pet
 
 #or
-yao run models.pet.get '::{"withs":{"dogs":{}},"withs":{"cats":{"withs":{"white_cats":{}}}}}'
+yao run models.pet.get '::{"withs":{"dogs":{},"cats":{"withs":{"white_cats":{}}}}}'
 
 ```
 
