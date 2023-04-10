@@ -12,7 +12,11 @@ yao migrate --reset
 比如下命令读取宠物表中关联的猫与狗信息。返回值无法正确归集。
 
 ```sh
-yao run yao.table.get pet '::{"withs":{"dog":{}},"withs":{"cat":{"withs":{"whitecat":{}}}}}'
+yao run yao.table.get pet
+
+#or
+yao run models.pet.get '::{"withs":{"dogs":{}},"withs":{"cats":{"withs":{"white_cats":{}}}}}'
+
 ```
 
 期待的结果：
